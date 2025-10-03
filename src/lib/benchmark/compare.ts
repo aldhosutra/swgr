@@ -37,7 +37,7 @@ export function compareReports(newReport: BenchmarkReport, oldReport: BenchmarkR
   for (const key in newReport.endpoints) {
     const base = oldReport.endpoints[key]
     const targ = newReport.endpoints[key]
-    if (!targ) continue // skip if missing in target (oldReport)
+    if (!base || !targ) continue // skip if missing in baseline or target
 
     results.push({
       baseline: base,
